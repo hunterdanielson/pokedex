@@ -13,11 +13,11 @@ const data=[{
     
 }]
 
-test('if there is only 1 type, render no p', () => {
+test('if there is only 1 type, render no span', () => {
     const wrapper = shallow(<PokemonList pokemons={data}/>);
 
     expect(wrapper.find('h1').length).toBe(1);
-    expect(wrapper.find('p').length).toBe(0);
+    expect(wrapper.find('span').length).toBe(0);
 });
 
 const dataTwoType=[{
@@ -27,8 +27,8 @@ const dataTwoType=[{
     
 }]
 
-test('if there is a pokemon with 2 types, render a p', () => {
+test('if there is a pokemon with 2 types, render a span', () => {
     const wrapper = shallow(<PokemonList pokemons={dataTwoType} />);
-    const myP = wrapper.find('p')
+    const myP = wrapper.find('span')
     expect(myP.contains('flying')).toBe(true);
 });
