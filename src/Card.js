@@ -9,9 +9,7 @@ export default class Card extends Component {
             <>
                 <div className="full-pokemon-container">
                         <h1>{pokemon.pokemon} #{pokemon.species_id}</h1>
-                    <Link to={`/pokemon/${pokemon.pokemon}`}>
                         <img src={pokemon.url_image} alt={pokemon.url_image} />
-                    </Link>
                         <ul>
                             <li>
                                 {/* only render 2 types if that pokemon has two types */}

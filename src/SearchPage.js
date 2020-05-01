@@ -34,12 +34,18 @@ export default class App extends Component {
     const fetchedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?${this.state.typeQuery}=${this.state.searchQuery}&page=${this.state.pageNum}&sort=${this.state.sortBy}&direction=${this.state.sortDirection}`)
     this.setState({ data: fetchedData.body.results })
   }
-  handlePage = (e) => {
+  handlePage = async (e) => {
     
+    let currentPage = this.state.pageNum;
+
     if(e.target.value === 'next') {
-      this.setState((state) => {return { pageNum: state.pageNum + 1 }});
+      const fetchedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?${this.state.typeQuery}=${this.state.searchQuery}&page=${currentPage+1}&sort=${this.state.sortBy}&direction=${this.state.sortDirection}`)
+      this.setState({ data: fetchedData.body.results })
+      this.setState({ pageNum: currentPage + 1 });
     } else {
-      this.setState((state) => {return { pageNum: state.pageNum - 1 }});
+      const fetchedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?${this.state.typeQuery}=${this.state.searchQuery}&page=${currentPage-1}&sort=${this.state.sortBy}&direction=${this.state.sortDirection}`)
+      this.setState({ data: fetchedData.body.results })
+      this.setState({ pageNum: currentPage - 1 });
     }    
   }
   render() {
