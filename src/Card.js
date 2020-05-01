@@ -31,7 +31,13 @@ export default class Card extends Component {
                                 </ul>
                             </li>
                             <li>
-                                <a href={pokemon.pokedex}>{pokemon.pokemon}</a>
+                                <a href={pokemon.pokedex}>Pokemon.com</a>
+                            </li>
+                            <br/>
+                            <li>
+                                <Link to={`/`}>
+                                    <p>Back Home</p>
+                                </Link>
                             </li>
                         </ul>
                 </div>
